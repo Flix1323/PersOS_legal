@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>PersOS – Datenschutz / Privacy</title>
+<style>
+:root {
+  --bg: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --rule: #d2d2d7; --accent: #c2410c;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #000000; --text: #f5f5f7; --muted: #a1a1a6; --rule: #38383a; --accent: #fb923c; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 100%/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+main { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+header.switch { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
+h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .5rem; scroll-margin-top: 1rem; }
+h3 { font-size: 1.05rem; margin: 1.5rem 0 .5rem; scroll-margin-top: 1rem; }
+p, ul { margin: 0 0 1rem; }
+ul { padding-left: 1.25rem; }
+li { margin-bottom: .4rem; }
+a { color: var(--accent); overflow-wrap: anywhere; }
+.toc { color: var(--muted); padding-left: 1.25rem; margin: 0 0 2rem; }
+.toc li { margin-bottom: .15rem; }
+article + article { border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 2rem; }
+</style>
+</head>
+<body>
+<main>
+<header class="switch"><a href="#de" lang="de">Deutsch</a> · <a href="#en" lang="en">English</a></header>
+<article id="de" lang="de">
+<h1>Datenschutzerklärung – PersOS</h1>
+<nav aria-label="Inhalt"><ol class="toc">
+<li><a href="#de-1">1. Verantwortlicher</a></li>
+<li><a href="#de-2">2. Grundsatz</a></li>
+<li><a href="#de-3">3. Daten auf deinem Gerät</a></li>
+<li><a href="#de-4">4. Apple-Schnittstellen</a></li>
+<li><a href="#de-5">5. Online-Abfragen auf deine Anforderung</a></li>
+<li><a href="#de-6">6. Optionale Synchronisierung</a></li>
+<li><a href="#de-7">7. KI-Funktionen</a></li>
+<li><a href="#de-8">8. WHOOP (optional)</a></li>
+<li><a href="#de-9">9. Export und Backup</a></li>
+<li><a href="#de-10">10. Rechtsgrundlagen</a></li>
+<li><a href="#de-11">11. Speicherdauer und Löschung</a></li>
+<li><a href="#de-12">12. Deine Rechte</a></li>
+<li><a href="#de-13">13. Kinder und Jugendliche</a></li>
+<li><a href="#de-14">14. Änderungen</a></li>
+</ol></nav>
+<p><strong>Stand:</strong> 27. September 2026</p>
+<h2 id="de-1">1. Verantwortlicher</h2>
+<p>Felix Hansmeier<br>
+Horstmarer Landweg 84<br>
+[PLZ Ort]<br>
+E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a></p>
+<p>PersOS wird von einer Privatperson entwickelt. Es gibt keinen Datenschutzbeauftragten, da keine Pflicht dazu besteht.</p>
+<h2 id="de-2">2. Grundsatz</h2>
+<p>PersOS funktioniert vollständig <strong>ohne Konto</strong>. Alle Daten, die du in der App erfasst, liegen zuerst und standardmäßig <strong>nur auf deinem Gerät</strong>. Es gibt <strong>kein Tracking, keine Analytics, keine Werbung</strong> und keine Weitergabe an Dritte zu Werbe- oder Analysezwecken. Daten verlassen dein Gerät nur, wenn du eine der unten beschriebenen Funktionen bewusst nutzt oder einschaltest.</p>
+<h2 id="de-3">3. Daten auf deinem Gerät</h2>
+<p>Die App speichert lokal, was du eingibst, zum Beispiel:</p>
+<ul>
+<li>Profil (Name, gewünschte Ansprache, Lebensabschnitt, aktive Bereiche)</li>
+<li>Aufgaben, Eingang, Tagesplanung, Notizen, Ziele, Fokus-Sitzungen</li>
+<li>Studium und Arbeit (Stundenplan, Abgaben, Klausuren, Noten, Karteikarten, Formeln, Bewerbungen, Arbeitslog und Performance Review)</li>
+<li>Workouts, Trainingspläne, Mahlzeiten, Rezepte, Einkaufsliste, Wasser, Gewicht</li>
+</ul>
+<p>Diese Daten liegen in der App-Datenbank auf deinem Gerät. Wir haben keinen Zugriff darauf. Sie werden gelöscht, wenn du die App löschst.</p>
+<p><strong>Nur auf dem Gerät</strong> und auch nicht im Sync oder im Backup: Gespräche mit dem Companion (dem KI-Assistenten der App) und Stellenvorschläge aus gespeicherten Suchen.</p>
+<h2 id="de-4">4. Apple-Schnittstellen</h2>
+<p>Die folgenden Zugriffe fragt iOS einzeln ab. Du kannst sie jederzeit in den iOS-Einstellungen widerrufen.</p>
+<ul>
+<li><strong>Apple Health:</strong> Die App liest Gesundheitswerte (z. B. HRV, Ruhepuls, Schlaf und Schlafphasen, Aktivität, Trainings, Gewicht, VO2max, SpO2, Atemfrequenz, Blutdruck, Blutzucker, Körperzusammensetzung, Nährwerte), um sie anzuzeigen und Trainings in dein Protokoll zu übernehmen. Sie schreibt Kraft-Workouts, Mahlzeiten, auf Wunsch Wasser und ein in der App eingetragenes Gewicht nach Apple Health. <strong>Gesundheitswerte aus Apple Health verlassen dein Gerät nie</strong>: Sie werden weder synchronisiert noch an eine KI gesendet noch an uns übermittelt.</li>
+<li><strong>Kalender und Erinnerungen:</strong> zum Anzeigen und Anlegen von Terminen und Erinnerungen, zum Einlesen eines Stundenplans aus einem (auch abonnierten) Kalender und zum Eintragen deines Stundenplans in einen eigenen Kalender. Die Daten bleiben in deinem Kalender bzw. deinen Erinnerungen.</li>
+<li><strong>Kamera:</strong> zum Scannen von Dokumenten und Klausuren, zum Erfassen von Barcodes auf Lebensmitteln und zum Fotografieren von Mahlzeiten. Ausgewertet wird auf dem Gerät, außer du wählst ausdrücklich eine Cloud-Auswertung (siehe Abschnitt 7).</li>
+<li><strong>Musik:</strong> um während eines Workouts den laufenden Titel anzuzeigen und die Wiedergabe zu steuern.</li>
+<li><strong>Apple Watch:</strong> Trainings und Routinen können über WorkoutKit auf deine Apple Watch übertragen werden.</li>
+<li><strong>Siri, Kurzbefehle, Teilen-Menü, Widgets und Mitteilungen:</strong> laufen lokal auf deinem Gerät. Mitteilungen werden auf dem Gerät geplant, nicht über einen Server verschickt.</li>
+</ul>
+<p>Die App fragt <strong>nicht</strong> nach deinem Standort.</p>
+<h2 id="de-5">5. Online-Abfragen auf deine Anforderung</h2>
+<p>Einige Funktionen fragen öffentliche Dienste ab, <strong>nur wenn du sie nutzt</strong>. Dabei wird nur das übertragen, was für die Abfrage nötig ist. Technisch bedingt erhält der jeweilige Dienst außerdem deine IP-Adresse. Es wird kein Konto benötigt, und wir erhalten dabei keine Daten.</p>
+<ul>
+<li><strong>Open Food Facts</strong> (Open Food Facts, Frankreich): wenn du einen Barcode scannst oder „Online suchen“ tippst. Übertragen wird nur der Barcode bzw. deine Suchwörter. Nie beim Tippen, nie im Hintergrund.</li>
+<li><strong>Jobsuche der Bundesagentur für Arbeit:</strong> wenn du nach Stellen suchst oder eine Suche speicherst. Übertragen werden deine Suchbegriffe, der Ort, der Umkreis und die Filter. Gespeicherte Suchen fragt die App gelegentlich im Hintergrund erneut ab, um neue Stellen vorzuschlagen; auch dabei gehen nur diese Suchangaben hinaus.</li>
+<li><strong>Apple Maps:</strong> wenn du für eine Bewerbung einen Ort suchst. Übertragen wird nur, was du in das Suchfeld tippst, an Apple.</li>
+</ul>
+<p>Für diese Dienste gelten deren eigene Datenschutzbestimmungen.</p>
+<h2 id="de-6">6. Optionale Synchronisierung</h2>
+<p>Du kannst in den Einstellungen <strong>eines</strong> von zwei Sync-Zielen wählen oder Sync ausgeschaltet lassen (Standard).</p>
+<h3 id="de-6-1">6.1 Konto (Supabase)</h3>
+<ul>
+<li><strong>Anmeldung:</strong> über „Mit Apple anmelden“ oder Google. Dabei erhalten wir eine Nutzer-ID und die E-Mail-Adresse, die Apple bzw. Google uns übermittelt (bei Apple ggf. eine anonymisierte Weiterleitungsadresse). Für die Anmeldung selbst gelten zusätzlich die Datenschutzbestimmungen von Apple bzw. Google.</li>
+<li><strong>Synchronisierte Daten:</strong> die in Abschnitt 3 genannten App-Inhalte, damit sie auf deinen Geräten gleich sind. <strong>Ausgenommen:</strong> Herzfrequenz- und Energiewerte von Workouts, alle Werte aus Apple Health und WHOOP, Companion-Gespräche und Stellenvorschläge.</li>
+<li><strong>Anbieter:</strong> Supabase Inc. als Auftragsverarbeiter. Die Datenbank liegt in einem Rechenzentrum in der <strong>EU</strong>. Da Supabase Inc. ein US-Unternehmen ist, ist ein Zugriff aus den USA nicht völlig ausgeschlossen. Grundlage dafür sind die EU-Standardvertragsklauseln.</li>
+<li><strong>Abmelden</strong> beendet den Sync. Lokale Daten bleiben erhalten.</li>
+</ul>
+<h3 id="de-6-2">6.2 iCloud</h3>
+<p>Die Daten werden in deiner <strong>privaten iCloud-Datenbank</strong> bei Apple gespeichert. Sie sind nur mit deiner Apple-ID zugänglich, wir können sie nicht lesen. Es gelten die Datenschutzbestimmungen von Apple. Es gelten dieselben Ausnahmen wie beim Konto.</p>
+<h2 id="de-7">7. KI-Funktionen</h2>
+<ul>
+<li><strong>Standard:</strong> KI-Funktionen laufen <strong>auf dem Gerät</strong> (Apple Foundation Models). Dabei verlassen keine Daten das Gerät.</li>
+<li><strong>Cloud-KI (optional):</strong> nur mit Konto <strong>und</strong> nachdem du sie in den Einstellungen eingeschaltet hast. Der Schalter gilt nur für dieses Gerät und ist nicht Teil des Backups.</li>
+<li><strong>Anbieter:</strong> Die Anfrage läuft über unseren Server (Supabase, EU) an den Anbieter, den du in den Einstellungen wählst: <strong>Mistral AI SAS (Frankreich)</strong> oder <strong>Anthropic PBC (USA, Modell „Claude“)</strong>. Bei Anthropic werden die Daten in einem Drittland verarbeitet.</li>
+<li><strong>Was gesendet wird:</strong> Vor dem ersten Senden eines Gesprächs zeigt die App, welche Bereiche der Companion lesen darf. Unter jeder Antwort siehst du, welche Einträge tatsächlich gesendet wurden. Fotos und Dokumente (z. B. ein Essensfoto, ein Stundenplan als PDF oder Foto, eine gescannte Klausur) werden nur gesendet, wenn du dafür ausdrücklich die Cloud-Auswertung wählst.</li>
+<li>Anfrageinhalte werden von uns <strong>weder gespeichert noch protokolliert</strong>. Gespeichert wird nur ein Zähler der Anfragen pro Tag und Konto, um Missbrauch zu begrenzen.</li>
+<li><strong>Gesundheitswerte werden nie an die Cloud-KI gesendet.</strong></li>
+<li>Änderungen, die die KI vorschlägt, werden entweder erst nach deiner Bestätigung übernommen oder sofort mit einem sichtbaren Beleg und der Möglichkeit zum Rückgängigmachen.</li>
+</ul>
+<h2 id="de-8">8. WHOOP (optional)</h2>
+<p>Wenn du dein WHOOP-Konto verbindest, meldest du dich direkt bei WHOOP an (OAuth). Die App ruft dann Recovery-, Strain- und Schlafwerte über die WHOOP-API ab und zeigt sie an.</p>
+<ul>
+<li>Die Zugangs-Tokens liegen <strong>nur in der Keychain</strong> deines Geräts, nicht im Sync und nicht im Backup.</li>
+<li>Zum Tausch und zur Erneuerung der Tokens leitet unser Server (Supabase, EU) die Anfrage an WHOOP weiter. Dabei wird <strong>nichts gespeichert oder protokolliert</strong>.</li>
+<li>Die WHOOP-Werte bleiben auf dem Gerät wie alle Gesundheitswerte.</li>
+<li>„Trennen“ löscht die Tokens. Für die Daten bei WHOOP gilt die Datenschutzerklärung von WHOOP, Inc.</li>
+</ul>
+<h2 id="de-9">9. Export und Backup</h2>
+<p>Du kannst alle Daten in eine Datei exportieren und an einem Ort deiner Wahl speichern. Die Datei ist mit deiner <strong>Passphrase verschlüsselt</strong>. Wir haben weder die Datei noch die Passphrase. Eine verlorene Passphrase kann <strong>nicht wiederhergestellt</strong> werden. Der Export enthält keine Anmelde-Tokens.</p>
+<h2 id="de-10">10. Rechtsgrundlagen</h2>
+<ul>
+<li>Bereitstellung der App, Konto, Sync und Online-Abfragen auf deine Anforderung: Art. 6 Abs. 1 lit. b DSGVO (Nutzungsvertrag)</li>
+<li>Cloud-KI, WHOOP und Apple-Zugriffe: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</li>
+<li>Gesundheitsdaten: Art. 9 Abs. 2 lit. a DSGVO (ausdrückliche Einwilligung)</li>
+<li>Missbrauchsbegrenzung durch den Anfragezähler: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)</li>
+</ul>
+<p>Eine Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen, indem du die Funktion ausschaltest oder die Freigabe in iOS entziehst.</p>
+<h2 id="de-11">11. Speicherdauer und Löschung</h2>
+<ul>
+<li><strong>Lokale Daten:</strong> bis du sie löschst oder die App entfernst.</li>
+<li><strong>Konto und Sync-Daten:</strong> bis zur Löschung des Kontos. Du löschst es jederzeit selbst unter <strong>Profil und Einstellungen → Verbindungen → Konto löschen</strong>. Dabei werden sofort alle zugehörigen Server-Daten gelöscht. Hast du dich mit Apple angemeldet, widerrufen wir außerdem die Verknüpfung mit deiner Apple-ID. Du entscheidest, ob die Daten auf dem Gerät erhalten bleiben oder ebenfalls gelöscht werden.</li>
+<li><strong>iCloud-Daten:</strong> verwaltest du über deine iCloud-Einstellungen.</li>
+<li><strong>KI-Anfragezähler:</strong> wird mit dem Konto gelöscht.</li>
+</ul>
+<h2 id="de-12">12. Deine Rechte</h2>
+<p>Du hast das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Wende dich dazu an <a href="mailto:felix.hansmeier@gmail.com.">felix.hansmeier@gmail.com.</a> Du hast außerdem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, etwa in deinem Bundesland.</p>
+<h2 id="de-13">13. Kinder und Jugendliche</h2>
+<p>PersOS richtet sich auch an Schülerinnen und Schüler. Für die optionalen Cloud-Funktionen (Konto, Cloud-KI, WHOOP) gilt: Wer jünger als 16 Jahre ist, braucht die Einwilligung der Eltern. Ohne diese Funktionen verlassen nur die Abfragen aus Abschnitt 5 das Gerät, und nur wenn du sie auslöst.</p>
+<h2 id="de-14">14. Änderungen</h2>
+<p>Wir passen diese Erklärung an, wenn sich die App ändert. Das Datum oben zeigt den aktuellen Stand.</p>
+</article>
+<article id="en" lang="en">
+<h1>Privacy Policy – PersOS</h1>
+<nav aria-label="Contents"><ol class="toc">
+<li><a href="#en-1">1. Controller</a></li>
+<li><a href="#en-2">2. Principle</a></li>
+<li><a href="#en-3">3. Data on your device</a></li>
+<li><a href="#en-4">4. Apple frameworks</a></li>
+<li><a href="#en-5">5. Online lookups you request</a></li>
+<li><a href="#en-6">6. Optional sync</a></li>
+<li><a href="#en-7">7. AI features</a></li>
+<li><a href="#en-8">8. WHOOP (optional)</a></li>
+<li><a href="#en-9">9. Export and backup</a></li>
+<li><a href="#en-10">10. Legal bases</a></li>
+<li><a href="#en-11">11. Retention and deletion</a></li>
+<li><a href="#en-12">12. Your rights</a></li>
+<li><a href="#en-13">13. Children</a></li>
+<li><a href="#en-14">14. Changes</a></li>
+</ol></nav>
+<p><strong>Last updated:</strong> September 27, 2026</p>
+<h2 id="en-1">1. Controller</h2>
+<p>Felix Hansmeier<br>
+Horstmarer Landweg 84<br>
+[Postcode City]<br>
+Germany<br>
+E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a></p>
+<p>PersOS is developed by a private individual. No data protection officer has been appointed, as none is required.</p>
+<h2 id="en-2">2. Principle</h2>
+<p>PersOS works fully <strong>without an account</strong>. Everything you enter is stored <strong>on your device only</strong> by default. There is <strong>no tracking, no analytics, no advertising</strong>, and no sharing with third parties for advertising or analytics. Data leaves your device only if you deliberately use or turn on one of the features described below.</p>
+<h2 id="en-3">3. Data on your device</h2>
+<p>The app stores what you enter locally, for example:</p>
+<ul>
+<li>Profile (name, preferred form of address, life stage, active areas)</li>
+<li>Tasks, inbox, day planning, notes, goals, focus sessions</li>
+<li>Study and work (timetable, assignments, exams, grades, flashcards, formulas, job applications, work log and performance review)</li>
+<li>Workouts, training plans, meals, recipes, shopping list, water, weight</li>
+</ul>
+<p>This data lives in the app's database on your device. We have no access to it. It is deleted when you delete the app.</p>
+<p><strong>Device only</strong>, and not in sync or backups either: conversations with the Companion (the app's AI assistant) and job suggestions from saved searches.</p>
+<h2 id="en-4">4. Apple frameworks</h2>
+<p>iOS asks for each of the following permissions separately. You can revoke them at any time in iOS Settings.</p>
+<ul>
+<li><strong>Apple Health:</strong> The app reads health values (e.g. HRV, resting heart rate, sleep and sleep stages, activity, workouts, weight, VO2 max, SpO2, respiratory rate, blood pressure, blood glucose, body composition, nutrition) to display them and to add workouts to your log. It writes strength workouts, meals, water if you choose, and a weight you enter in the app to Apple Health. <strong>Health values from Apple Health never leave your device</strong>: they are not synced, not sent to any AI and not transmitted to us.</li>
+<li><strong>Calendar and Reminders:</strong> to show and create events and reminders, to read a timetable from a (possibly subscribed) calendar, and to add your timetable to a calendar of its own. The data stays in your calendar and reminders.</li>
+<li><strong>Camera:</strong> to scan documents and exams, capture barcodes on food, and photograph meals. Analysis happens on the device unless you explicitly choose cloud analysis (see section 7).</li>
+<li><strong>Music:</strong> to show the current track during a workout and control playback.</li>
+<li><strong>Apple Watch:</strong> workouts and routines can be sent to your Apple Watch via WorkoutKit.</li>
+<li><strong>Siri, Shortcuts, share menu, widgets and notifications:</strong> run locally on your device. Notifications are scheduled on the device, not sent through a server.</li>
+</ul>
+<p>The app does <strong>not</strong> ask for your location.</p>
+<h2 id="en-5">5. Online lookups you request</h2>
+<p>Some features query public services, <strong>only when you use them</strong>. Only what the lookup needs is transmitted. For technical reasons the service also receives your IP address. No account is needed, and we receive no data in the process.</p>
+<ul>
+<li><strong>Open Food Facts</strong> (Open Food Facts, France): when you scan a barcode or tap "Search online". Only the barcode or your search words are sent. Never while typing, never in the background.</li>
+<li><strong>Job search of the German Federal Employment Agency (Bundesagentur für Arbeit):</strong> when you search for jobs or save a search. Your search terms, place, radius and filters are sent. The app occasionally re-runs saved searches in the background to suggest new postings; only these search details are sent then as well.</li>
+<li><strong>Apple Maps:</strong> when you look up a place for a job application. Only what you type into the search field is sent to Apple.</li>
+</ul>
+<p>The privacy policies of these services apply.</p>
+<h2 id="en-6">6. Optional sync</h2>
+<p>In Settings you can choose <strong>one</strong> of two sync targets, or leave sync off (default).</p>
+<h3 id="en-6-1">6.1 Account (Supabase)</h3>
+<ul>
+<li><strong>Sign-in:</strong> with Sign in with Apple or Google. We receive a user ID and the email address that Apple or Google provides (with Apple possibly an anonymous relay address). The privacy policies of Apple or Google also apply to the sign-in itself.</li>
+<li><strong>Synced data:</strong> the app content listed in section 3, so it is the same on all your devices. <strong>Excluded:</strong> heart rate and energy values of workouts, all values from Apple Health and WHOOP, Companion conversations and job suggestions.</li>
+<li><strong>Provider:</strong> Supabase Inc. as processor. The database is hosted in a data center in the <strong>EU</strong>. As Supabase Inc. is a US company, access from the US cannot be fully ruled out. This is covered by the EU Standard Contractual Clauses.</li>
+<li><strong>Signing out</strong> stops sync. Local data is kept.</li>
+</ul>
+<h3 id="en-6-2">6.2 iCloud</h3>
+<p>Data is stored in your <strong>private iCloud database</strong> at Apple. It is only accessible with your Apple ID. We cannot read it. Apple's privacy policy applies. The same exclusions apply as for the account.</p>
+<h2 id="en-7">7. AI features</h2>
+<ul>
+<li><strong>Default:</strong> AI features run <strong>on your device</strong> (Apple Foundation Models). No data leaves the device.</li>
+<li><strong>Cloud AI (optional):</strong> only with an account <strong>and</strong> after you turn it on in Settings. The switch applies to this device only and is not part of backups.</li>
+<li><strong>Providers:</strong> Requests go through our server (Supabase, EU) to the provider you choose in Settings: <strong>Mistral AI SAS (France)</strong> or <strong>Anthropic PBC (USA, model "Claude")</strong>. With Anthropic, your data is processed in a third country.</li>
+<li><strong>What is sent:</strong> Before the first message of a conversation, the app shows which areas the Companion may read. Below every answer you can see which entries were actually sent. Photos and documents (e.g. a meal photo, a timetable as PDF or photo, a scanned exam) are only sent when you explicitly choose cloud analysis for them.</li>
+<li>We <strong>neither store nor log</strong> request content. We only store a count of requests per day and account to limit abuse.</li>
+<li><strong>Health values are never sent to the cloud AI.</strong></li>
+<li>Changes the AI suggests are either applied only after you confirm them, or applied at once with a visible receipt and an undo option.</li>
+</ul>
+<h2 id="en-8">8. WHOOP (optional)</h2>
+<p>If you connect your WHOOP account, you sign in directly with WHOOP (OAuth). The app then fetches recovery, strain and sleep values from the WHOOP API and displays them.</p>
+<ul>
+<li>Access tokens are stored <strong>only in your device's Keychain</strong>, not in sync and not in backups.</li>
+<li>To exchange and refresh tokens, our server (Supabase, EU) forwards the request to WHOOP. <strong>Nothing is stored or logged</strong> in the process.</li>
+<li>WHOOP values stay on the device like all health values.</li>
+<li>"Disconnect" deletes the tokens. WHOOP, Inc.'s privacy policy applies to data held by WHOOP.</li>
+</ul>
+<h2 id="en-9">9. Export and backup</h2>
+<p>You can export all your data to a file and store it wherever you like. The file is <strong>encrypted with your passphrase</strong>. We have neither the file nor the passphrase. A lost passphrase <strong>cannot be recovered</strong>. The export contains no sign-in tokens.</p>
+<h2 id="en-10">10. Legal bases</h2>
+<ul>
+<li>Providing the app, account, sync and online lookups you request: Art. 6(1)(b) GDPR (contract)</li>
+<li>Cloud AI, WHOOP and Apple permissions: Art. 6(1)(a) GDPR (consent)</li>
+<li>Health data: Art. 9(2)(a) GDPR (explicit consent)</li>
+<li>Abuse limitation via the request counter: Art. 6(1)(f) GDPR (legitimate interest)</li>
+</ul>
+<p>You can withdraw consent at any time with effect for the future by turning the feature off or revoking the permission in iOS.</p>
+<h2 id="en-11">11. Retention and deletion</h2>
+<ul>
+<li><strong>Local data:</strong> until you delete it or remove the app.</li>
+<li><strong>Account and sync data:</strong> until the account is deleted. You can delete it yourself at any time under <strong>Profile and Settings → Connections → Delete Account</strong>. All associated server data is deleted immediately. If you signed in with Apple, we also revoke the link to your Apple ID. You decide whether the data on the device is kept or deleted as well.</li>
+<li><strong>iCloud data:</strong> managed through your iCloud settings.</li>
+<li><strong>AI request counter:</strong> deleted with the account.</li>
+</ul>
+<h2 id="en-12">12. Your rights</h2>
+<p>You have the right of access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction (Art. 18), data portability (Art. 20) and objection (Art. 21 GDPR). Contact <a href="mailto:felix.hansmeier@gmail.com.">felix.hansmeier@gmail.com.</a> You also have the right to lodge a complaint with a data protection supervisory authority.</p>
+<h2 id="en-13">13. Children</h2>
+<p>PersOS is also meant for school students. For the optional cloud features (account, cloud AI, WHOOP), users under 16 need parental consent. Without these features, only the lookups in section 5 leave the device, and only when you trigger them.</p>
+<h2 id="en-14">14. Changes</h2>
+<p>We update this policy when the app changes. The date at the top shows the current version.</p>
+</article>
+</main>
+</body>
+</html>
