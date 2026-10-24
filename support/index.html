@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>PersOS – Hilfe / Support</title>
+<style>
+:root {
+  --bg: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --rule: #d2d2d7; --accent: #c2410c;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #000000; --text: #f5f5f7; --muted: #a1a1a6; --rule: #38383a; --accent: #fb923c; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 100%/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+main { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+nav.switch { display: flex; gap: .5rem; margin-bottom: 1.5rem; }
+.switch a { padding: .5rem .9rem; border: 1px solid var(--rule); border-radius: .5rem; text-decoration: none; }
+.switch a[aria-current="page"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .5rem; scroll-margin-top: 1rem; }
+h3 { font-size: 1.05rem; margin: 1.5rem 0 .5rem; scroll-margin-top: 1rem; }
+p, ul { margin: 0 0 1rem; }
+ul { padding-left: 1.25rem; }
+li { margin-bottom: .4rem; }
+a { color: var(--accent); overflow-wrap: anywhere; }
+.toc { color: var(--muted); list-style: none; padding-left: 0; margin: 0 0 2rem; }
+.toc li { margin-bottom: .15rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<main>
+<nav class="switch" aria-label="Sprache"><a href="./" lang="de" hreflang="de" aria-current="page">Deutsch</a><a href="en/" lang="en" hreflang="en">English</a></nav>
+<article id="de" lang="de">
+<h1>PersOS – Hilfe und Testphase</h1>
+<nav aria-label="Inhalt"><ol class="toc">
+<li><a href="#de-1">1. Kontakt</a></li>
+<li><a href="#de-2">2. Feedback in der Testphase</a></li>
+<li><a href="#de-3">3. Worauf es in der Testphase ankommt</a></li>
+<li><a href="#de-4">4. Häufige Fragen</a></li>
+<li><a href="#de-5">5. Datenschutz</a></li>
+</ol></nav>
+<p>Stand: 28. September 2026</p>
+<h2 id="de-1">1. Kontakt</h2>
+<p>Du erreichst mich per E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a><br>
+Ich antworte in der Regel innerhalb von zwei Tagen.</p>
+<h2 id="de-2">2. Feedback in der Testphase</h2>
+<p>Der schnellste Weg ist <strong>TestFlight</strong>:</p>
+<ul>
+<li><strong>Screenshot aufnehmen</strong>, dann in der Vorschau auf „Beta-Feedback senden“ tippen. Du kannst markieren, was dir auffällt, und einen Satz dazuschreiben.</li>
+<li><strong>Absturz:</strong> Nach einem Absturz fragt TestFlight, ob du einen Bericht senden willst. Ein Satz dazu, was du gerade gemacht hast, hilft sehr.</li>
+<li><strong>Alles andere</strong> (Ideen, was fehlt, was stört): per E-Mail.</li>
+</ul>
+<p>PersOS selbst sammelt keine Nutzungsdaten, keine Analysen und kein Tracking. Ich sehe nur, was du über TestFlight oder per E-Mail schickst.</p>
+<h2 id="de-3">3. Worauf es in der Testphase ankommt</h2>
+<ul>
+<li>Fühlt sich die App für Neue ruhig an, oder ist es zu viel?</li>
+<li>Passt die Einrichtung zu deinem Lebensabschnitt (Schule, Studium, Beruf)?</li>
+<li>Was fehlt dir, was stört dich im Alltag?</li>
+<li>Wo hakt es: etwas dauert zu lange, ein Knopf reagiert nicht, ein Text ist unklar?</li>
+</ul>
+<h2 id="de-4">4. Häufige Fragen</h2>
+<h3 id="de-brauche-ich-ein-konto">Brauche ich ein Konto?</h3>
+<p>Nein. PersOS funktioniert vollständig ohne Konto. Ein Konto oder iCloud brauchst du nur, wenn deine Daten zwischen Geräten abgeglichen werden sollen.</p>
+<h3 id="de-wie-sichere-ich-meine-daten">Wie sichere ich meine Daten?</h3>
+<p>In Profil und Einstellungen → Daten &amp; Backup exportierst du eine verschlüsselte Sicherung in die Dateien-App. Bewahre die Passphrase gut auf: Sie lässt sich nicht wiederherstellen.</p>
+<h3 id="de-ich-habe-den-wiederherstellungscode-für-den-sync-verloren">Ich habe den Wiederherstellungscode für den Sync verloren.</h3>
+<p>Solange ein Gerät noch eingerichtet ist, kannst du dort einen neuen Code erzeugen (Profil und Einstellungen → deine Profilkarte → Konto &amp; Synchronisierung). Sind alle Geräte weg und der Code verloren, lassen sich die Daten auf dem Server nicht mehr entschlüsseln. Das ist Absicht: Niemand außer dir kann sie lesen.</p>
+<h3 id="de-die-widgets-bleiben-leer">Die Widgets bleiben leer.</h3>
+<p>Öffne PersOS einmal. Die App schreibt dabei den Stand, den die Widgets zeigen.</p>
+<h3 id="de-wie-lösche-ich-mein-konto">Wie lösche ich mein Konto?</h3>
+<p>In Profil und Einstellungen → deine Profilkarte → Konto löschen. Deine Daten auf dem Gerät bleiben erhalten.</p>
+<h2 id="de-5">5. Datenschutz</h2>
+<p>Die Datenschutzerklärung findest du unter https://flix1323.github.io/PersOS_legal/.</p>
+</article>
+</main>
+</body>
+</html>

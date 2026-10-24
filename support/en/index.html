@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>PersOS – Hilfe / Support</title>
+<style>
+:root {
+  --bg: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --rule: #d2d2d7; --accent: #c2410c;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #000000; --text: #f5f5f7; --muted: #a1a1a6; --rule: #38383a; --accent: #fb923c; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 100%/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+main { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+nav.switch { display: flex; gap: .5rem; margin-bottom: 1.5rem; }
+.switch a { padding: .5rem .9rem; border: 1px solid var(--rule); border-radius: .5rem; text-decoration: none; }
+.switch a[aria-current="page"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .5rem; scroll-margin-top: 1rem; }
+h3 { font-size: 1.05rem; margin: 1.5rem 0 .5rem; scroll-margin-top: 1rem; }
+p, ul { margin: 0 0 1rem; }
+ul { padding-left: 1.25rem; }
+li { margin-bottom: .4rem; }
+a { color: var(--accent); overflow-wrap: anywhere; }
+.toc { color: var(--muted); list-style: none; padding-left: 0; margin: 0 0 2rem; }
+.toc li { margin-bottom: .15rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<main>
+<nav class="switch" aria-label="Language"><a href="../" lang="de" hreflang="de">Deutsch</a><a href="./" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<article id="en" lang="en">
+<h1>PersOS – Help and beta test</h1>
+<nav aria-label="Contents"><ol class="toc">
+<li><a href="#en-1">1. Contact</a></li>
+<li><a href="#en-2">2. Feedback during the beta</a></li>
+<li><a href="#en-3">3. What matters in the beta</a></li>
+<li><a href="#en-4">4. Frequently asked questions</a></li>
+<li><a href="#en-5">5. Privacy</a></li>
+</ol></nav>
+<p>Last updated: 28 September 2026</p>
+<h2 id="en-1">1. Contact</h2>
+<p>You can reach me by email: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a><br>
+I usually reply within two days.</p>
+<h2 id="en-2">2. Feedback during the beta</h2>
+<p>The quickest way is <strong>TestFlight</strong>:</p>
+<ul>
+<li><strong>Take a screenshot</strong>, then tap “Send Beta Feedback” in the preview. You can mark what caught your eye and add a sentence.</li>
+<li><strong>Crash:</strong> After a crash, TestFlight asks whether to send a report. A sentence about what you were doing helps a lot.</li>
+<li><strong>Everything else</strong> (ideas, what is missing, what bothers you): by email.</li>
+</ul>
+<p>PersOS itself collects no usage data, no analytics and no tracking. I only see what you send via TestFlight or email.</p>
+<h2 id="en-3">3. What matters in the beta</h2>
+<ul>
+<li>Does the app feel calm for newcomers, or is it too much?</li>
+<li>Does the setup fit your stage of life (school, university, work)?</li>
+<li>What do you miss, what bothers you day to day?</li>
+<li>Where does it get stuck: something takes too long, a button does not respond, a text is unclear?</li>
+</ul>
+<h2 id="en-4">4. Frequently asked questions</h2>
+<h3 id="en-do-i-need-an-account">Do I need an account?</h3>
+<p>No. PersOS works fully without an account. You only need an account or iCloud if your data should stay in sync across devices.</p>
+<h3 id="en-how-do-i-back-up-my-data">How do I back up my data?</h3>
+<p>In Profile and Settings → Data &amp; Backup you export an encrypted backup to the Files app. Keep the passphrase safe: it cannot be recovered.</p>
+<h3 id="en-i-lost-the-recovery-code-for-sync">I lost the recovery code for sync.</h3>
+<p>As long as one device is still set up, you can create a new code there (Settings → Connections). If all devices are gone and the code is lost, the data on the server can no longer be decrypted. That is on purpose: nobody but you can read it.</p>
+<h3 id="en-the-widgets-stay-empty">The widgets stay empty.</h3>
+<p>Open PersOS once. The app then writes the state the widgets show.</p>
+<h3 id="en-how-do-i-delete-my-account">How do I delete my account?</h3>
+<p>In Profile and Settings → Connections → Delete account. Your data on the device stays.</p>
+<h2 id="en-5">5. Privacy</h2>
+<p>You can find the privacy policy at https://flix1323.github.io/PersOS_legal/.</p>
+</article>
+</main>
+</body>
+</html>
