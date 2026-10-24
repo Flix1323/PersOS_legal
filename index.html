@@ -27,28 +27,38 @@ body {
   font: 105%/1.75 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
 }
 main { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
-.topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--bg); z-index: 1; }
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding: .8rem 0; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--bg); z-index: 1; }
 .wordmark { font-weight: 750; font-size: 1.1rem; letter-spacing: -.03em; }
 .page-controls { display: flex; align-items: center; gap: .65rem; }
-#theme-toggle { width: 44px; height: 44px; padding: .65rem; border: 1px solid var(--rule); border-radius: 50%; background: var(--bg); color: var(--text); cursor: pointer; }
-#theme-toggle[hidden] { display: none; }
-#theme-toggle:hover { background: var(--surface); }
-#theme-toggle svg { width: 100%; height: 100%; display: block; }
-#theme-toggle .sun { display: none; }
-:root[data-theme="dark"] #theme-toggle .sun { display: block; }
-:root[data-theme="dark"] #theme-toggle .moon { display: none; }
-nav.switch { display: flex; gap: .2rem; padding: .2rem; background: var(--surface); border: 1px solid var(--rule); border-radius: .75rem; font-size: .85rem; }
-.switch a { display: inline-flex; align-items: center; min-height: 44px; padding: .35rem .8rem; border-radius: .5rem; text-decoration: none; color: var(--muted); }
-.switch a[aria-current="page"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+.theme-choices { display: flex; padding: 2px; border: 1px solid var(--rule); border-radius: .6rem; background: var(--surface); }
+.theme-choices[hidden] { display: none; }
+.theme-choices button { display: flex; align-items: center; justify-content: center; gap: .3rem; min-width: 44px; min-height: 44px; padding: .3rem .5rem; border: 0; border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; font: inherit; font-size: .75rem; font-weight: 500; line-height: 1; }
+.theme-choices button[aria-pressed="true"] { background: var(--bg); color: var(--text); box-shadow: 0 1px 3px #00000018; }
+.theme-choices svg { width: 16px; height: 16px; }
+.language-menu { position: relative; font-size: .85rem; }
+.language-menu summary { display: flex; align-items: center; gap: .45rem; min-height: 44px; padding: .35rem .7rem; border: 1px solid var(--rule); border-radius: .6rem; cursor: pointer; list-style: none; }
+.language-menu summary::-webkit-details-marker { display: none; }
+.language-menu summary svg { width: 15px; height: 15px; }
+.language-menu summary::after { content: '⌄'; color: var(--muted); }
+nav.switch { position: absolute; top: calc(100% + .5rem); right: 0; min-width: 11rem; padding: .35rem; background: var(--bg); border: 1px solid var(--rule); border-radius: .7rem; box-shadow: 0 8px 28px #00000018; }
+.switch a { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: .4rem .7rem; border-radius: .4rem; text-decoration: none; color: var(--text); }
+.switch a:hover { background: var(--surface); }
+.switch a[aria-current="page"] { background: var(--surface); font-weight: 600; }
+.switch a[aria-current="page"]::after { content: '✓'; color: var(--accent); }
 a:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 730; letter-spacing: -.045em; line-height: 1.15; margin: 2.75rem 0 1.75rem; text-wrap: balance; }
-h2 { font-size: 1.35rem; letter-spacing: -.025em; line-height: 1.35; margin: 2.75rem 0 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); scroll-margin-top: 7rem; }
+.policy-section { margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid var(--rule); }
+h2 { font-size: 1.45rem; letter-spacing: -.025em; line-height: 1.35; margin: 0 0 1.25rem; scroll-margin-top: 7rem; }
 h3 { font-size: 1.1rem; line-height: 1.45; margin: 1.75rem 0 .75rem; scroll-margin-top: 7rem; }
 p, ul { margin: 0 0 1.25rem; }
 article > p:first-of-type { color: var(--muted); font-size: .9rem; }
 ul { padding-left: 1.25rem; }
 li { margin-bottom: .7rem; }
 li::marker { color: var(--muted); }
+.policy-section > ul { list-style: none; padding: 0; }
+.policy-section > ul > li { margin: 0; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.policy-section > ul > li:last-child { border-bottom: 0; }
+.policy-section > ul > li > strong:first-child { display: block; margin-bottom: .25rem; font-weight: 650; }
 a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; }
 .contents { background: var(--surface); border: 1px solid var(--rule); border-radius: .8rem; padding: .9rem 1.1rem; margin: 0 0 1.25rem; }
 .contents summary { cursor: pointer; font-weight: 600; }
@@ -60,7 +70,8 @@ a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; 
 .toc a:hover { color: var(--accent); background: var(--bg); }
 .toc-number { color: var(--muted); font-size: .75rem; font-variant-numeric: tabular-nums; flex-shrink: 0; }
 @media (max-width: 600px) { .toc { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 400px) { main { padding-inline: 1rem; } .page-controls { gap: .4rem; } .switch a { padding-inline: .6rem; } }
+@media (max-width: 480px) { .theme-label { display: none; } }
+@media (max-width: 400px) { main { padding-inline: 1rem; } .page-controls { gap: .4rem; } .language-menu summary { padding-inline: .5rem; } }
 @media print { .topbar, .contents { display: none; } main { max-width: none; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -69,11 +80,18 @@ a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; 
 <main>
 <header class="topbar"><span class="wordmark">PersOS</span>
 <div class="page-controls">
-<button id="theme-toggle" type="button" hidden aria-label="Darstellung wechseln">
+<details class="language-menu"><summary aria-label="Sprache wählen">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
+Deutsch</summary><nav class="switch" aria-label="Sprache"><a href="./" lang="de" hreflang="de" aria-current="page">Deutsch</a><a href="en/" lang="en" hreflang="en">English</a></nav></details>
+<div class="theme-choices" role="group" hidden aria-label="Darstellung">
+<button type="button" data-theme-choice="light" aria-label="Hell" title="Hell" aria-pressed="false">
 <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+<span class="theme-label">Hell</span></button>
+<button type="button" data-theme-choice="dark" aria-label="Dunkel" title="Dunkel" aria-pressed="false">
 <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+<span class="theme-label">Dunkel</span>
 </button>
-<nav class="switch" aria-label="Sprache"><a href="./" lang="de" hreflang="de" aria-current="page">Deutsch</a><a href="en/" lang="en" hreflang="en">English</a></nav>
+</div>
 </div></header>
 <article id="de" lang="de">
 <h1>Datenschutzerklärung – PersOS</h1>
@@ -96,6 +114,7 @@ a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; 
 </ol></nav>
 </details>
 <p><strong>Stand:</strong> 24. Oktober 2026</p>
+<section class="policy-section" aria-labelledby="de-1">
 <h2 id="de-1">1. Verantwortlicher</h2>
 <p>Felix Hansmeier<br>
 Horstmarer Landweg 84<br>
@@ -103,11 +122,15 @@ Horstmarer Landweg 84<br>
 Deutschland<br>
 E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a></p>
 <p>PersOS wird von einer Privatperson entwickelt. Es gibt keinen Datenschutzbeauftragten, da keine Pflicht dazu besteht.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-2">
 <h2 id="de-2">2. Grundsatz</h2>
 <p>PersOS funktioniert vollständig <strong>ohne Konto</strong>. Alle Daten, die du in der App erfasst, liegen zuerst und standardmäßig <strong>nur auf deinem Gerät</strong>. Es gibt <strong>kein Tracking, keine Analytics, keine Werbung</strong> und keine Weitergabe an Dritte zu Werbe- oder Analysezwecken. Daten verlassen dein Gerät nur, wenn du eine der unten beschriebenen Funktionen bewusst nutzt oder einschaltest.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-3">
 <h2 id="de-3">3. Daten auf deinem Gerät</h2>
 <p>Die App speichert lokal, was du eingibst, zum Beispiel:</p>
-<ul>
+<ul role="list">
 <li>Profil (Name, gewünschte Ansprache, Altersangabe (Altersstufe und Datum der Freigabe, kein Geburtsdatum), Lebensabschnitt, aktive Bereiche)</li>
 <li>Aufgaben, Eingang, Tagesplanung, Notizen, Ziele, Fokus-Sitzungen</li>
 <li>Studium und Arbeit (Stundenplan, Abgaben, Klausuren, Noten, Karteikarten, Formeln, Bewerbungen, Arbeitslog und Performance Review)</li>
@@ -119,9 +142,11 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <p><strong>Absturzberichte:</strong> Stürzt die App ab oder hängt sie, stellt iOS einen technischen Bericht bereit (Stack-Trace, Gerätemodell, iOS-Version, keine Inhalte aus der App). PersOS speichert die letzten zehn auf dem Gerät, nicht im Sync und nicht im Backup. Gesendet wird nichts automatisch; unter Einstellungen › Daten &amp; Backup kannst du die Berichte teilen oder löschen.</p>
 <p><strong>Skizzen in Notizen:</strong> Zeichnungen, die du an einer Notiz machst, und der Text, den die App darin erkennt (nur auf dem Gerät), liegen auf deinem Gerät und in deinem verschlüsselten Backup. Sie werden <strong>nicht synchronisiert</strong> (weder mit einem Konto noch über iCloud) und nie an eine KI gesendet.</p>
 <p><strong>Bedeutungssuche und Übersetzung:</strong> Die Suche nach Bedeutung (verwandte Einträge, Notizsuche, Auswahl für den Companion) rechnet auf dem Gerät mit einem Sprachmodell des Systems; dafür führt die App einen <strong>Suchindex</strong> auf dem Gerät: alle deine Einträge in kurzen Abschnitten (zum Beispiel auch Journal, Essensplan und Companion-Gespräche) und die berechneten Bedeutungswerte (Vektoren). Die Index-Datei und die Vektoren liegen in einer eigenen Datei auf dem Gerät, werden aus deinen Daten aufgebaut, sind nicht im Backup und nicht im Export, werden nicht synchronisiert und verlassen das Gerät nie. Was der Companion aus dem Index liest, richtet sich nach den freigegebenen Bereichen (Abschnitt 7). Einträge aus Fitness &amp; Health, auch Journal und Mahlzeiten, gehen nie an die Cloud-KI; nur der Companion auf dem Gerät liest sie. Companion-Gespräche sind durchsuchbar, werden dem Companion aber nie als Kontext gegeben. Löschst du die App, verschwindet der Index mit ihr. Übersetzungen (Karteikarten, Notizen, Antworten des Companions) macht das Übersetzungsblatt von iOS auf dem Gerät; die Sprachmodelle lädt das System einmal von Apple herunter, ohne Konto, und deine Texte verlassen das Gerät dafür nicht.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-4">
 <h2 id="de-4">4. Apple-Schnittstellen</h2>
 <p>Die folgenden Zugriffe fragt iOS einzeln ab. Du kannst sie jederzeit in den iOS-Einstellungen widerrufen.</p>
-<ul>
+<ul role="list">
 <li><strong>Apple Health:</strong> Die App liest Gesundheitswerte (z. B. HRV, Ruhepuls, Schlaf und Schlafphasen, Aktivität, Trainings, Gewicht, VO2max, SpO2, Atemfrequenz, Blutdruck, Blutzucker, Körperzusammensetzung, Nährwerte), um sie anzuzeigen und Trainings in dein Protokoll zu übernehmen. Sie schreibt Kraft-Workouts, Mahlzeiten, auf Wunsch Wasser und ein in der App eingetragenes Gewicht nach Apple Health. <strong>Gesundheitswerte aus Apple Health verlassen dein Gerät nie</strong>: Sie werden weder synchronisiert noch an eine KI gesendet noch an uns übermittelt.</li>
 <li><strong>Kalender und Erinnerungen:</strong> zum Anzeigen und Anlegen von Terminen und Erinnerungen, zum Einlesen eines Stundenplans aus einem (auch abonnierten) Kalender und zum Eintragen deines Stundenplans in einen eigenen Kalender. Die Daten bleiben in deinem Kalender bzw. deinen Erinnerungen.</li>
 <li><strong>Kamera:</strong> zum Scannen von Dokumenten und Klausuren, zum Erfassen von Barcodes auf Lebensmitteln und zum Fotografieren von Mahlzeiten. Ausgewertet wird auf dem Gerät, außer du wählst ausdrücklich eine Cloud-Auswertung (siehe Abschnitt 7).</li>
@@ -131,9 +156,11 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <li><strong>Siri, Kurzbefehle, Teilen-Menü, Widgets und Mitteilungen:</strong> laufen lokal auf deinem Gerät. Mitteilungen werden auf dem Gerät geplant, nicht über einen Server verschickt.</li>
 </ul>
 <p>Die App fragt <strong>nicht</strong> nach deinem Standort.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-5">
 <h2 id="de-5">5. Online-Abfragen auf deine Anforderung</h2>
 <p>Einige Funktionen fragen öffentliche Dienste ab, <strong>nur wenn du sie nutzt</strong>. Dabei wird nur das übertragen, was für die Abfrage nötig ist. Technisch bedingt erhält der jeweilige Dienst außerdem deine IP-Adresse. Es wird kein Konto benötigt, und wir erhalten dabei keine Daten.</p>
-<ul>
+<ul role="list">
 <li><strong>Open Food Facts</strong> (Open Food Facts, Frankreich): wenn du einen Barcode scannst oder „Online suchen“ tippst. Übertragen wird nur der Barcode bzw. deine Suchwörter. Nie beim Tippen, nie im Hintergrund.</li>
 <li><strong>USDA FoodData Central</strong> (US-Landwirtschaftsministerium, USA): wenn du „Allgemeine Lebensmittel (USDA)“ tippst. Dein Suchbegriff geht über unseren Server (Supabase, EU) an USDA; unser Server <strong>speichert und protokolliert ihn nicht</strong>. Ein deutscher Suchbegriff wird vorher auf deinem Gerät ins Englische übersetzt (iOS-Übersetzung, die Sprachmodelle lädt das System einmal von Apple). Nie beim Tippen, nie im Hintergrund.</li>
 <li><strong>Rezept-Link:</strong> wenn du ein Rezept aus einem Link importierst, lädt dein Gerät genau diese eine Seite direkt von der Adresse, die du eingegeben hast (nur HTTPS), und liest das Rezept auf dem Gerät. Die Seite sieht dabei, wie bei jedem Aufruf im Browser, deine IP-Adresse; über unseren Server läuft nichts.</li>
@@ -145,11 +172,13 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <li><strong>Apple Wetter und Apple Karten (Modul „Unterwegs“):</strong> nur wenn du das Modul einschaltest und einen Wohnort festlegst. Die App fragt dann beim Öffnen bei Apple Wetter das Wetter für die Koordinaten deines Wohnorts und des Orts deines laufenden oder nächsten Termins ab, bei Apple Karten die Reisezeit zu Terminen (vom Wohnort oder vom Ort des Termins direkt davor) und sucht dazu Orte, die in deinen Terminen stehen (der Ortstext geht an Apple). Einmal pro Woche lädt sie das Apple-Wetter-Zeichen für die Quellenangabe. Es wird kein Konto benötigt. Dein aktueller Standort wird nie abgefragt. Die Orte, die du festlegst, liegen in deinem Profil (lokal, im Backup und im Sync nur, wenn du ihn eingeschaltet hast). Wetter und Reisezeiten werden nur auf dem Gerät zwischengespeichert, nicht im Sync und nicht im Backup.</li>
 </ul>
 <p>Für diese Dienste gelten deren eigene Datenschutzbestimmungen.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-6">
 <h2 id="de-6">6. Optionale Synchronisierung</h2>
 <p>Du kannst in den Einstellungen <strong>eines</strong> von zwei Sync-Zielen wählen oder Sync ausgeschaltet lassen (Standard).</p>
 <p><strong>Ende-zu-Ende-verschlüsselt:</strong> Bevor Daten dein Gerät für den Sync verlassen, werden sie auf dem Gerät verschlüsselt (AES-256-GCM). Den Schlüssel haben nur deine Geräte: Er liegt in deinem iCloud-Schlüsselbund und, mit deinem Wiederherstellungscode verschlüsselt, als Sicherung auf dem Server. Weder wir noch Supabase noch Apple können die Inhalte lesen. Unverschlüsselt bleiben nur technische Angaben, die der Sync braucht: eine zufällige Kennung je Eintrag, Zeitpunkt der letzten Änderung und ggf. der Löschung sowie ein opaker, schlüsselgebundener Prüfwert, der Integrität prüft und Konflikte bei gleichem Zeitstempel auflöst. Den Wiederherstellungscode speichern wir nirgends; ist er verloren und hast du kein Gerät mehr mit dem Schlüssel, sind die Cloud-Daten nicht mehr lesbar. <strong>Nicht</strong> Ende-zu-Ende-verschlüsselt sind Anfragen an die Cloud-KI (Abschnitt 7): Sie sind eine bewusste Entscheidung pro Gespräch.</p>
 <h3 id="de-6-1">6.1 Konto (Supabase)</h3>
-<ul>
+<ul role="list">
 <li><strong>Anmeldung:</strong> über „Mit Apple anmelden“ oder Google. Dabei erhalten wir eine Nutzer-ID und die E-Mail-Adresse, die Apple bzw. Google uns übermittelt (bei Apple ggf. eine anonymisierte Weiterleitungsadresse). Für die Anmeldung selbst gelten zusätzlich die Datenschutzbestimmungen von Apple bzw. Google.</li>
 <li><strong>Synchronisierte Daten:</strong> die in Abschnitt 3 genannten App-Inhalte, damit sie auf deinen Geräten gleich sind. <strong>Ausgenommen:</strong> Herzfrequenz- und Energiewerte von Workouts, alle Werte aus Apple Health und WHOOP, Companion-Gespräche und Stellenvorschläge.</li>
 <li><strong>Anbieter:</strong> Supabase Inc. als Auftragsverarbeiter. Die Datenbank liegt in einem Rechenzentrum in der <strong>EU</strong>. Da Supabase Inc. ein US-Unternehmen ist, ist ein Zugriff aus den USA nicht völlig ausgeschlossen. Grundlage dafür sind die EU-Standardvertragsklauseln.</li>
@@ -160,8 +189,10 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <h3 id="de-6-3">6.3 Teilen</h3>
 <p>Du kannst einzelne Inhalte (z. B. einen Kartenstapel, ein Rezept oder eine Routine) als Datei oder Link an andere schicken. Dabei geht <strong>nichts an uns</strong>. Geteilt wird nur der Inhalt selbst, nie dein Lernstand, deine Noten oder Gesundheitswerte.</p>
 <p>Bei einem Link steht der Inhalt im Teil nach dem `#`. Browser senden diesen Teil nie an einen Server. Die Hinweisseite für Empfänger ohne App liegt bei GitHub Pages; GitHub sieht beim Öffnen des Links technisch bedingt die IP-Adresse, aber nie den Inhalt. Wer den Link hat, kann den Inhalt lesen – teile ihn also nur mit Personen, denen du ihn geben willst.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-7">
 <h2 id="de-7">7. KI-Funktionen</h2>
-<ul>
+<ul role="list">
 <li><strong>Standard:</strong> KI-Funktionen laufen <strong>auf dem Gerät</strong> (Apple Foundation Models). Dabei verlassen keine Daten das Gerät.</li>
 <li><strong>Apples Server (optional, ab iOS 27):</strong> Unter Apple Intelligence kannst du erlauben, dass größere Aufgaben Apples Server nutzen (Private Cloud Compute). Der Schalter ist standardmäßig aus, gilt nur für dieses Gerät und ist nicht Teil des Backups; beim Einschalten erklärt die App, was gesendet wird. Dafür brauchst du kein Konto bei uns, und die Anfragen laufen nicht über unseren Server. Gesendet werden deine Nachricht und die Einträge aus den Bereichen, die der Companion lesen darf, auch Gesundheitswerte. Laut Apple speichert Apple die Inhalte nicht; verarbeitet wird in Rechenzentren von Apple und Google Cloud unter denselben Garantien. Es gibt ein Tageslimit über deinen iCloud-Account. Unter jeder Antwort steht, welches Modell geantwortet hat. Ohne Netz, bei erreichtem Limit oder bei einer Störung läuft die Aufgabe auf dem Gerät weiter.</li>
 <li><strong>Cloud-KI (optional):</strong> nur mit Konto <strong>und</strong> nachdem du sie in den Einstellungen eingeschaltet hast. Der Schalter gilt nur für dieses Gerät und ist nicht Teil des Backups.</li>
@@ -173,9 +204,11 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <li><strong>Bewerbungen:</strong> „Entwurf mit KI“ sendet in der Cloud Firma, Stelle, die Notizen der Bewerbung, die Ansprechperson, deinen Namen und deine Vorlage; vor dem ersten Mal fragt die App, und unter jedem Entwurf steht, was gesendet wurde. Beim Einordnen einer Antwort zeigt die App vor <strong>jedem</strong> Cloud-Aufruf den Mailtext, der gesendet würde, und sendet ihn nur nach deiner Bestätigung. Der Mailtext stammt von Dritten; die KI darf daraus nur eine Art vorschlagen, und übernommen wird nur, was du antippst.</li>
 <li>Änderungen, die die KI vorschlägt, werden entweder erst nach deiner Bestätigung übernommen oder sofort mit einem sichtbaren Beleg und der Möglichkeit zum Rückgängigmachen.</li>
 </ul>
+</section>
+<section class="policy-section" aria-labelledby="de-8">
 <h2 id="de-8">8. WHOOP (optional)</h2>
 <p>Wenn du dein WHOOP-Konto verbindest, meldest du dich direkt bei WHOOP an (OAuth). Die App ruft dann Recovery-, Strain- und Schlafwerte über die WHOOP-API ab und zeigt sie an.</p>
-<ul>
+<ul role="list">
 <li>Die Zugangs-Tokens liegen <strong>nur in der Keychain</strong> deines Geräts, nicht im Sync und nicht im Backup.</li>
 <li>Zum Tausch und zur Erneuerung der Tokens leitet unser Server (Supabase, EU) die Anfrage an WHOOP weiter. Dabei wird <strong>nichts gespeichert oder protokolliert</strong>.</li>
 <li>Die WHOOP-Werte bleiben auf dem Gerät wie alle Gesundheitswerte.</li>
@@ -183,7 +216,7 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 </ul>
 <h3 id="de-strava-optional">Strava (optional)</h3>
 <p>Wenn du dein Strava-Konto verbindest, meldest du dich direkt bei Strava an (OAuth). Die App lädt dann deine Aktivitäten der letzten 30 Tage (Zeit, Sportart, Strecke, durchschnittlicher Puls) und legt sie als Trainings im Logbuch an; ein gleiches Training aus Apple Health oder WHOOP wird ergänzt.</p>
-<ul>
+<ul role="list">
 <li>Die Zugangs-Tokens liegen <strong>nur in der Keychain</strong> deines Geräts, nicht im Sync und nicht im Backup.</li>
 <li>Zum Tausch und zur Erneuerung der Tokens leitet unser Server (Supabase, EU) die Anfrage an Strava weiter. Dabei wird <strong>nichts gespeichert oder protokolliert</strong>; deine Aktivitäten laufen nie über unseren Server.</li>
 <li>Die übernommenen Trainings sind normale Trainings des Logbuchs, mit deren Regeln für Sync, Backup und Export (Abschnitt 6 und 9).</li>
@@ -194,10 +227,14 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <h3 id="de-körperzustand-erholung-belastung-und-schlaf">Körperzustand: Erholung, Belastung und Schlaf</h3>
 <p>Aus Apple Health (HRV, Puls im Schlaf, Ruhepuls, Atemfrequenz, Handgelenktemperatur, Schlaf, aktive Energie, Schritte, Anstrengung von Trainings) und deinem Trainingslog berechnet die App auf dem Gerät deine Erholung, Belastung, Schlafbedarf und Schlafschuld. Für den Maximalpuls liest sie <strong>Geburtsdatum und Geschlecht</strong> aus Apple Health, nur zur Berechnung; beides wird nicht gespeichert. Die berechneten Tageswerte und deine Angabe zum Schlafbedarf liegen auf dem Gerät und im Backup (Abschnitt 9), werden aber <strong>nie synchronisiert</strong> und nie an eine Cloud-KI gesendet. Deine Angabe, wie anstrengend ein Training war, wird wie die übrigen Trainingsangaben synchronisiert.</p>
 <p>Die Handgelenktemperatur schwankt im Zyklus. Nur wenn du es im Körperzustand ausdrücklich freigibst, liest die App aus Apple Health deine <strong>Zyklusdaten</strong> (Blutungstage) und, ab iOS 27, deinen <strong>Menopausestatus</strong>. Sie nutzt beides allein dafür, Temperaturschwankungen im Zyklus von echten Abweichungen zu unterscheiden. Diese Daten werden nicht gespeichert, nicht angezeigt, nicht ins Backup geschrieben und nie synchronisiert oder an eine KI gesendet. Die Freigabe kannst du jederzeit in den Health-Einstellungen widerrufen.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-9">
 <h2 id="de-9">9. Export und Backup</h2>
 <p>Du kannst alle Daten in eine Datei exportieren und an einem Ort deiner Wahl speichern. Die Datei ist mit deiner <strong>Passphrase verschlüsselt</strong>. Wir haben weder die Datei noch die Passphrase. Eine verlorene Passphrase kann <strong>nicht wiederhergestellt</strong> werden. Der Export enthält keine Anmelde-Tokens.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-10">
 <h2 id="de-10">10. Rechtsgrundlagen</h2>
-<ul>
+<ul role="list">
 <li>Bereitstellung der App, Konto, Sync und Online-Abfragen auf deine Anforderung: Art. 6 Abs. 1 lit. b DSGVO (Nutzungsvertrag)</li>
 <li>Cloud-KI, WHOOP und Apple-Zugriffe: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</li>
 <li>Gesundheitsdaten: Art. 9 Abs. 2 lit. a DSGVO (ausdrückliche Einwilligung)</li>
@@ -206,8 +243,10 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <li>Altersmarkierung im Schlüsselbund des Geräts und Kennzeichen am Konto: Schutz Minderjähriger (Abschnitt 13)</li>
 </ul>
 <p>Eine Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen, indem du die Funktion ausschaltest oder die Freigabe in iOS entziehst.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-11">
 <h2 id="de-11">11. Speicherdauer und Löschung</h2>
-<ul>
+<ul role="list">
 <li><strong>Lokale Daten:</strong> bis du sie löschst oder die App entfernst.</li>
 <li><strong>Konto und Sync-Daten:</strong> bis zur Löschung des Kontos. Du löschst es jederzeit selbst unter <strong>Profil und Einstellungen → deine Profilkarte → Konto löschen</strong>. Dabei werden sofort alle zugehörigen Server-Daten gelöscht. Hast du dich mit Apple angemeldet, widerrufen wir außerdem die Verknüpfung mit deiner Apple-ID. Du entscheidest, ob die Daten auf dem Gerät erhalten bleiben oder ebenfalls gelöscht werden.</li>
 <li><strong>iCloud-Daten:</strong> verwaltest du über deine iCloud-Einstellungen.</li>
@@ -215,13 +254,17 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <li><strong>Altersmarkierung im Schlüsselbund:</strong> Sie schränkt nur bis zum Datum der Freigabe ein bzw. bis Apple „18 oder älter“ meldet. Der Eintrag selbst bleibt auf dem Gerät: Er bleibt bei „Konto löschen, Daten hier behalten“ und bei „Konto und Daten auf diesem Gerät löschen“ (Abschnitt 13), und iOS entscheidet, ob er das Löschen der App übersteht. Beim Zurücksetzen des Geräts ist er weg.</li>
 <li><strong>Kennzeichen am Konto:</strong> wird mit dem Konto gelöscht.</li>
 </ul>
+</section>
+<section class="policy-section" aria-labelledby="de-12">
 <h2 id="de-12">12. Deine Rechte</h2>
 <p>Du hast das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Wende dich dazu an <a href="mailto:felix.hansmeier@gmail.com.">felix.hansmeier@gmail.com.</a> Du hast außerdem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, etwa in deinem Bundesland.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-13">
 <h2 id="de-13">13. Kinder und Jugendliche</h2>
 <p>PersOS richtet sich auch an Schülerinnen und Schüler. Deshalb kennt die App dein Alter in Stufen (unter 13, 13 bis 15, 16 oder 17, ab 18) und schützt Minderjährige zusätzlich. Ohne die optionalen Cloud-Funktionen (Konto, WHOOP, Strava, Teilen) verlassen nur die Abfragen aus Abschnitt 5 das Gerät, und nur wenn du sie auslöst.</p>
 <p><strong>Woher die App dein Alter kennt:</strong> Bei der Einrichtung fragt die App zuerst Apple nach dem Altersbereich deines Apple-Accounts, wenn du das erlaubst. Apple teilt der App dabei nur eine Altersstufe und die Art der Angabe mit (von dir selbst, von deinen Eltern in der Familienfreigabe oder bestätigt), kein Geburtsdatum. Teilst du die Angabe nicht oder gibt es sie nicht, gibst du dein Alter selbst an: erst „Bist du 18 oder älter?“, bei „Nein“ Monat und Jahr, in dem du 18 wirst. Daraus berechnet die App deine Stufe und das <strong>Datum der Freigabe</strong> (der 1. des Monats nach dem Monat, in dem du 18 wirst). <strong>Gespeichert wird nur dieses Datum, kein Geburtsdatum.</strong> Aus dem Datum lässt sich dein Geburtsmonat und dein Geburtsjahr jedoch ableiten; bist du angemeldet, liegt es auch auf dem Server an deinem Konto (siehe unten). Einen Ausweis prüfen wir nicht. Weichen Apples Angabe und deine eigene voneinander ab, gilt die strengere.</p>
 <p><strong>Was in welcher Stufe möglich ist:</strong></p>
-<ul>
+<ul role="list">
 <li><strong>Unter 13:</strong> Es gibt kein Konto, kein Teilen, keine Verbindung zu WHOOP oder Strava und kein Server-Modell von Apple. Deine Daten bleiben auf dem Gerät, nur der Sync über deine eigene iCloud geht, wenn du ihn einschaltest. Gibst du an, unter 13 zu sein, beendet die App eine bestehende Anmeldung und trennt WHOOP und Strava; deine Daten auf dem Gerät bleiben.</li>
 <li><strong>13 bis 15:</strong> Konto, WHOOP, Strava, Teilen und Apples Server gehen nur, wenn du in der App bestätigst, dass deine Eltern einverstanden sind, und zwar <strong>getrennt</strong> für Konto (mit WHOOP und Strava), für Teilen und für Apples Server. Gespeichert wird dann nur der Zeitpunkt der Bestätigung und dass du sie selbst gegeben hast. Alles sind Angaben von dir selbst. Unter „Schutz &amp; Alter“ siehst du die Bestätigungen und kannst sie jederzeit zurückziehen; beim Konto beendet die App dann die Anmeldung und trennt WHOOP und Strava.</li>
 <li><strong>16 und 17:</strong> Konto, WHOOP, Strava, Teilen und Apples Server gehen ohne Bestätigung.</li>
@@ -229,14 +272,14 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 </ul>
 <p>Hast du die Frage noch nicht beantwortet (zum Beispiel nach einem Update), gelten vorläufig die strengen Grenzen für Minderjährige: Die Cloud-KI ist aus, Essen zählen und Körpergewicht sind ausgeblendet, der Companion fragt vor dem Schreiben nach und spricht einfach. Die Abendruhe unten gilt erst, wenn du dein Alter angegeben hast. Eine bestehende Anmeldung bleibt bis zu deiner Antwort bestehen, neue Verbindungen sind gesperrt, deine Daten auf dem Gerät bleiben unberührt.</p>
 <p><strong>Weitere Grenzen für alle unter 18:</strong></p>
-<ul>
+<ul role="list">
 <li>Essen zählen (Kalorien, Nährwerte, Ernährungsziele) und das Körpergewicht sind ausgeblendet. Vorhandene Einträge werden nicht gelöscht.</li>
 <li>Sobald du angegeben hast, minderjährig zu sein, löst die App zwischen 21 und 7 Uhr von sich aus keine Mitteilungen aus. Manche kommen stattdessen um 7 Uhr, andere entfallen. Was du selbst eingestellt hast (zum Beispiel Erinnerungen), bleibt.</li>
 <li>Der Companion schreibt nur nach deiner Bestätigung.</li>
 <li>Der Companion auf dem Gerät ist angewiesen, einfach zu sprechen, keine Ratschläge zu Diät, Kalorien oder Gewicht zu geben und dich, wenn es dir nicht gut geht, auf eine Vertrauensperson und die Nummer gegen Kummer (116 111) zu verweisen. Das ist eine Anweisung an ein Sprachmodell und <strong>keine Garantie</strong>: Es kann sich nicht daran halten. Verlässlich sind die ausgeblendeten Funktionen (Essen zählen, Körpergewicht) und die Bestätigung vor dem Schreiben. Lehnt das Gerätemodell eine Nachricht ab, zeigt die App den Hinweis auf eine Vertrauensperson und 116 111.</li>
 </ul>
 <p><strong>Was wo gespeichert wird:</strong></p>
-<ul>
+<ul role="list">
 <li><strong>Im Profil</strong> liegen die Altersstufe, ihre Quelle (Apple oder selbst angegeben), das Datum der Freigabe, der Zeitpunkt, ab dem die Angabe verbindlich ist, und die Zeitpunkte der Bestätigungen deiner Eltern. Sie gehören zu deinem Profil: Sie liegen auf deinem Gerät und sind, wie die übrigen Profildaten, Teil von Sync (Abschnitt 6) und Export (Abschnitt 9).</li>
 <li><strong>Eine Markierung im Schlüsselbund deines Geräts</strong> entsteht, sobald du minderjährig bist. Sie enthält die Altersstufe von Apple (falls die Angabe von Apple kam), das Datum der Freigabe und den Zeitpunkt der Markierung. Sie dient dem <strong>Schutz Minderjähriger</strong>: Die Angabe soll sich nicht durch eine Neuinstallation, ein neues Konto oder ein anderes Gerät mit Sync wieder lockern lassen. Die Markierung gilt nur für dieses Gerät, liegt nicht im iCloud-Schlüsselbund, nicht im Backup und nicht im Sync und kommt nie zu uns. Sie wird nur strenger, nie lockerer. <strong>Sie bleibt auch, wenn du unter „Konto &amp; Synchronisierung“ „Konto löschen, Daten hier behalten“ oder „Konto und Daten auf diesem Gerät löschen“ wählst.</strong> Ob sie das Löschen der App übersteht, entscheidet iOS. Sie schränkt nur bis zum Datum der Freigabe ein oder, wenn sie von Apple stammt, sobald Apple „18 oder älter“ meldet; dazu fragt die App Apple höchstens einmal am Tag.</li>
 <li><strong>Am Konto</strong> speichern wir, wenn du angemeldet und minderjährig bist, zwei Angaben: ob Apple „minderjährig“ gemeldet hat (ja oder nein) und das Datum der Freigabe, dazu den Zeitpunkt der letzten Änderung. Kein Geburtsdatum, keine Stufe. Gesetzt werden sie über geschützte Server-Funktionen, die bestehende Einschränkungen nur verschärfen. Sie sorgen dafür, dass unsere Cloud-KI-Funktion Anfragen von Minderjährigen ablehnt, auch nach einer Neuinstallation oder auf einem anderen Gerät. Kann der Server die Angabe nicht lesen, lehnt er die Anfrage ab. Er vergleicht das Datum mit der Zeit in der westlichsten Zeitzone (UTC−12), gibt also nirgends zu früh frei, in manchen Zeitzonen aber bis zu etwa einen Tag später als dein Gerät. Die Angaben werden mit dem Konto gelöscht.</li>
@@ -244,28 +287,36 @@ E-Mail: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a>
 <p><strong>Nach der Einrichtung:</strong> Eine Angabe kannst du nur bis zum Ende der Einrichtung frei korrigieren. Danach ändert sich dein Alter in der App nur noch über Apples Altersangabe oder am Datum der Freigabe; eine eigene Angabe nimmt die App dann nicht mehr an. Sync und das Einspielen eines Exports nehmen nur strengere Angaben an und lockern die Angabe in der App nie. Hast du dich versehentlich als minderjährig eingetragen, gelten die Grenzen bis zum Datum der Freigabe.</p>
 <p><strong>Gemeinsam genutzte Geräte:</strong> Die Markierung gilt für das Gerät. Nutzt ihr ein Gerät gemeinsam, gelten die Grenzen bis zum Datum der Freigabe für alle.</p>
 <p><strong>Die Lücke:</strong> Das ist ein Schutz auf Treu und Glauben, keine Altersprüfung. Wer schon beim ersten Start ein falsches Alter angibt, wird ohne Altersangabe von Apple (zum Beispiel aus der Familienfreigabe) nicht erkannt. Auch der Server prüft das Alter nicht selbst: Eine Meldung der App kann eine bestehende Apple-Minderjährigenmarkierung am Konto nicht aufheben. Ein serverseitig verifizierter Freigabeweg steht derzeit nicht zur Verfügung; dadurch können bereits markierte Erwachsene vorläufig weiter eingeschränkt bleiben. Setzt du das Gerät zurück, ist die Markierung weg; mit demselben Konto bleibt das Kennzeichen am Konto bestehen.</p>
+</section>
+<section class="policy-section" aria-labelledby="de-14">
 <h2 id="de-14">14. Änderungen</h2>
 <p>Wir passen diese Erklärung an, wenn sich die App ändert. Das Datum oben zeigt den aktuellen Stand.</p>
+</section>
 </article>
 </main>
 <script>
 const root = document.documentElement;
-const toggle = document.getElementById('theme-toggle');
+const choices = document.querySelectorAll('[data-theme-choice]');
 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
 function updateTheme(theme) {
   root.dataset.theme = theme;
-  const dark = theme === 'dark';
-  const label = root.lang === 'de'
-    ? (dark ? 'Helle Darstellung aktivieren' : 'Dunkle Darstellung aktivieren')
-    : (dark ? 'Switch to light mode' : 'Switch to dark mode');
-  toggle.setAttribute('aria-label', label);
-  toggle.title = label;
+  choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
 }
 updateTheme(root.dataset.theme || (systemTheme.matches ? 'dark' : 'light'));
-toggle.hidden = false;
-toggle.addEventListener('click', () => {
-  updateTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+document.querySelector('.theme-choices').hidden = false;
+choices.forEach(button => button.addEventListener('click', () => {
+  updateTheme(button.dataset.themeChoice);
   try { localStorage.setItem('persos-legal-theme', root.dataset.theme); } catch {}
+}));
+const languageMenu = document.querySelector('.language-menu');
+document.addEventListener('click', event => {
+  if (!languageMenu.contains(event.target)) languageMenu.open = false;
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && languageMenu.open) {
+    languageMenu.open = false;
+    languageMenu.querySelector('summary').focus();
+  }
 });
 </script>
 </body>

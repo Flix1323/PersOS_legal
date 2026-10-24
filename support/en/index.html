@@ -27,28 +27,38 @@ body {
   font: 105%/1.75 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
 }
 main { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
-.topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--bg); z-index: 1; }
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding: .8rem 0; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--bg); z-index: 1; }
 .wordmark { font-weight: 750; font-size: 1.1rem; letter-spacing: -.03em; }
 .page-controls { display: flex; align-items: center; gap: .65rem; }
-#theme-toggle { width: 44px; height: 44px; padding: .65rem; border: 1px solid var(--rule); border-radius: 50%; background: var(--bg); color: var(--text); cursor: pointer; }
-#theme-toggle[hidden] { display: none; }
-#theme-toggle:hover { background: var(--surface); }
-#theme-toggle svg { width: 100%; height: 100%; display: block; }
-#theme-toggle .sun { display: none; }
-:root[data-theme="dark"] #theme-toggle .sun { display: block; }
-:root[data-theme="dark"] #theme-toggle .moon { display: none; }
-nav.switch { display: flex; gap: .2rem; padding: .2rem; background: var(--surface); border: 1px solid var(--rule); border-radius: .75rem; font-size: .85rem; }
-.switch a { display: inline-flex; align-items: center; min-height: 44px; padding: .35rem .8rem; border-radius: .5rem; text-decoration: none; color: var(--muted); }
-.switch a[aria-current="page"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+.theme-choices { display: flex; padding: 2px; border: 1px solid var(--rule); border-radius: .6rem; background: var(--surface); }
+.theme-choices[hidden] { display: none; }
+.theme-choices button { display: flex; align-items: center; justify-content: center; gap: .3rem; min-width: 44px; min-height: 44px; padding: .3rem .5rem; border: 0; border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; font: inherit; font-size: .75rem; font-weight: 500; line-height: 1; }
+.theme-choices button[aria-pressed="true"] { background: var(--bg); color: var(--text); box-shadow: 0 1px 3px #00000018; }
+.theme-choices svg { width: 16px; height: 16px; }
+.language-menu { position: relative; font-size: .85rem; }
+.language-menu summary { display: flex; align-items: center; gap: .45rem; min-height: 44px; padding: .35rem .7rem; border: 1px solid var(--rule); border-radius: .6rem; cursor: pointer; list-style: none; }
+.language-menu summary::-webkit-details-marker { display: none; }
+.language-menu summary svg { width: 15px; height: 15px; }
+.language-menu summary::after { content: '⌄'; color: var(--muted); }
+nav.switch { position: absolute; top: calc(100% + .5rem); right: 0; min-width: 11rem; padding: .35rem; background: var(--bg); border: 1px solid var(--rule); border-radius: .7rem; box-shadow: 0 8px 28px #00000018; }
+.switch a { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: .4rem .7rem; border-radius: .4rem; text-decoration: none; color: var(--text); }
+.switch a:hover { background: var(--surface); }
+.switch a[aria-current="page"] { background: var(--surface); font-weight: 600; }
+.switch a[aria-current="page"]::after { content: '✓'; color: var(--accent); }
 a:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 730; letter-spacing: -.045em; line-height: 1.15; margin: 2.75rem 0 1.75rem; text-wrap: balance; }
-h2 { font-size: 1.35rem; letter-spacing: -.025em; line-height: 1.35; margin: 2.75rem 0 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); scroll-margin-top: 7rem; }
+.policy-section { margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid var(--rule); }
+h2 { font-size: 1.45rem; letter-spacing: -.025em; line-height: 1.35; margin: 0 0 1.25rem; scroll-margin-top: 7rem; }
 h3 { font-size: 1.1rem; line-height: 1.45; margin: 1.75rem 0 .75rem; scroll-margin-top: 7rem; }
 p, ul { margin: 0 0 1.25rem; }
 article > p:first-of-type { color: var(--muted); font-size: .9rem; }
 ul { padding-left: 1.25rem; }
 li { margin-bottom: .7rem; }
 li::marker { color: var(--muted); }
+.policy-section > ul { list-style: none; padding: 0; }
+.policy-section > ul > li { margin: 0; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.policy-section > ul > li:last-child { border-bottom: 0; }
+.policy-section > ul > li > strong:first-child { display: block; margin-bottom: .25rem; font-weight: 650; }
 a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; }
 .contents { background: var(--surface); border: 1px solid var(--rule); border-radius: .8rem; padding: .9rem 1.1rem; margin: 0 0 1.25rem; }
 .contents summary { cursor: pointer; font-weight: 600; }
@@ -60,7 +70,8 @@ a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; 
 .toc a:hover { color: var(--accent); background: var(--bg); }
 .toc-number { color: var(--muted); font-size: .75rem; font-variant-numeric: tabular-nums; flex-shrink: 0; }
 @media (max-width: 600px) { .toc { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 400px) { main { padding-inline: 1rem; } .page-controls { gap: .4rem; } .switch a { padding-inline: .6rem; } }
+@media (max-width: 480px) { .theme-label { display: none; } }
+@media (max-width: 400px) { main { padding-inline: 1rem; } .page-controls { gap: .4rem; } .language-menu summary { padding-inline: .5rem; } }
 @media print { .topbar, .contents { display: none; } main { max-width: none; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -69,11 +80,18 @@ a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; 
 <main>
 <header class="topbar"><span class="wordmark">PersOS</span>
 <div class="page-controls">
-<button id="theme-toggle" type="button" hidden aria-label="Change appearance">
+<details class="language-menu"><summary aria-label="Choose language">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
+English</summary><nav class="switch" aria-label="Language"><a href="../" lang="de" hreflang="de">Deutsch</a><a href="./" lang="en" hreflang="en" aria-current="page">English</a></nav></details>
+<div class="theme-choices" role="group" hidden aria-label="Appearance">
+<button type="button" data-theme-choice="light" aria-label="Light" title="Light" aria-pressed="false">
 <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+<span class="theme-label">Light</span></button>
+<button type="button" data-theme-choice="dark" aria-label="Dark" title="Dark" aria-pressed="false">
 <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+<span class="theme-label">Dark</span>
 </button>
-<nav class="switch" aria-label="Language"><a href="../" lang="de" hreflang="de">Deutsch</a><a href="./" lang="en" hreflang="en" aria-current="page">English</a></nav>
+</div>
 </div></header>
 <article id="en" lang="en">
 <h1>PersOS – Help and beta test</h1>
@@ -87,24 +105,31 @@ a { color: var(--accent); overflow-wrap: anywhere; text-underline-offset: .2em; 
 </ol></nav>
 </details>
 <p>Last updated: 28 September 2026</p>
+<section class="policy-section" aria-labelledby="en-1">
 <h2 id="en-1">1. Contact</h2>
 <p>You can reach me by email: <a href="mailto:felix.hansmeier@gmail.com">felix.hansmeier@gmail.com</a><br>
 I usually reply within two days.</p>
+</section>
+<section class="policy-section" aria-labelledby="en-2">
 <h2 id="en-2">2. Feedback during the beta</h2>
 <p>The quickest way is <strong>TestFlight</strong>:</p>
-<ul>
+<ul role="list">
 <li><strong>Take a screenshot</strong>, then tap “Send Beta Feedback” in the preview. You can mark what caught your eye and add a sentence.</li>
 <li><strong>Crash:</strong> After a crash, TestFlight asks whether to send a report. A sentence about what you were doing helps a lot.</li>
 <li><strong>Everything else</strong> (ideas, what is missing, what bothers you): by email.</li>
 </ul>
 <p>PersOS itself collects no usage data, no analytics and no tracking. I only see what you send via TestFlight or email.</p>
+</section>
+<section class="policy-section" aria-labelledby="en-3">
 <h2 id="en-3">3. What matters in the beta</h2>
-<ul>
+<ul role="list">
 <li>Does the app feel calm for newcomers, or is it too much?</li>
 <li>Does the setup fit your stage of life (school, university, work)?</li>
 <li>What do you miss, what bothers you day to day?</li>
 <li>Where does it get stuck: something takes too long, a button does not respond, a text is unclear?</li>
 </ul>
+</section>
+<section class="policy-section" aria-labelledby="en-4">
 <h2 id="en-4">4. Frequently asked questions</h2>
 <h3 id="en-do-i-need-an-account">Do I need an account?</h3>
 <p>No. PersOS works fully without an account. You only need an account or iCloud if your data should stay in sync across devices.</p>
@@ -116,28 +141,36 @@ I usually reply within two days.</p>
 <p>Open PersOS once. The app then writes the state the widgets show.</p>
 <h3 id="en-how-do-i-delete-my-account">How do I delete my account?</h3>
 <p>In Profile and Settings → Connections → Delete account. Your data on the device stays.</p>
+</section>
+<section class="policy-section" aria-labelledby="en-5">
 <h2 id="en-5">5. Privacy</h2>
 <p>You can find the privacy policy at https://flix1323.github.io/PersOS_legal/.</p>
+</section>
 </article>
 </main>
 <script>
 const root = document.documentElement;
-const toggle = document.getElementById('theme-toggle');
+const choices = document.querySelectorAll('[data-theme-choice]');
 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
 function updateTheme(theme) {
   root.dataset.theme = theme;
-  const dark = theme === 'dark';
-  const label = root.lang === 'de'
-    ? (dark ? 'Helle Darstellung aktivieren' : 'Dunkle Darstellung aktivieren')
-    : (dark ? 'Switch to light mode' : 'Switch to dark mode');
-  toggle.setAttribute('aria-label', label);
-  toggle.title = label;
+  choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
 }
 updateTheme(root.dataset.theme || (systemTheme.matches ? 'dark' : 'light'));
-toggle.hidden = false;
-toggle.addEventListener('click', () => {
-  updateTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+document.querySelector('.theme-choices').hidden = false;
+choices.forEach(button => button.addEventListener('click', () => {
+  updateTheme(button.dataset.themeChoice);
   try { localStorage.setItem('persos-legal-theme', root.dataset.theme); } catch {}
+}));
+const languageMenu = document.querySelector('.language-menu');
+document.addEventListener('click', event => {
+  if (!languageMenu.contains(event.target)) languageMenu.open = false;
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && languageMenu.open) {
+    languageMenu.open = false;
+    languageMenu.querySelector('summary').focus();
+  }
 });
 </script>
 </body>
